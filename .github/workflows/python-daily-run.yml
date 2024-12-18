@@ -3,7 +3,7 @@ name: Daily Python Script
 on:
   schedule:
     # Runs daily at 6:00 AM UTC
-    - cron: "0 6 * * *"
+    - cron: "10 7 * * *"
 
 jobs:
   run-script:
@@ -28,4 +28,4 @@ jobs:
       # Step 4: Run the Python script
       - name: Run Script
         run: |
-          python your_script.py
+          python Amz_Webscrapping (2).py
