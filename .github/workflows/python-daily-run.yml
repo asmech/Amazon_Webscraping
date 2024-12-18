@@ -22,9 +22,9 @@ jobs:
           python-version: '3.x'
 
       # Step 3: Install dependencies (if any)
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+      # - name: Install Dependencies
+      #   run: |
+      #     pip install -r requirements.txt
 
       # Step 4: Run the Python script
       - name: Run Script
