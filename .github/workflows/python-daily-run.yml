@@ -1,9 +1,8 @@
-
 name: Daily Python Script
 
 on:
   schedule:
-    # Runs daily at 6:00 AM UTC
+    # Runs daily at 9:06 AM UTC
     - cron: "06 9 * * *"
 
 jobs:
@@ -21,12 +20,20 @@ jobs:
         with:
           python-version: '3.x'
 
-      # Step 3: Install dependencies (if any)
-      # - name: Install Dependencies
-      #   run: |
-      #     pip install -r requirements.txt
+      # Step 3: List files (debugging step, optional)
+      - name: List files in the repository
+        run: ls -la
 
-      # Step 4: Run the Python script
+      # Step 4: Install dependencies (if requirements.txt exists)
+      - name: Install Dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt file found, skipping."
+          fi
+
+      # Step 5: Run the Python script
       - name: Run Script
         run: |
-          python Amz_Webscrapping (2).py
+          python "Amz_Webscrapping (2).py"
