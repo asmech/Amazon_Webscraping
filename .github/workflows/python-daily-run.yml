@@ -1,39 +1,26 @@
-name: Daily Python Script
+name: Run Python Script Daily
 
 on:
   schedule:
-    # Runs daily at 9:06 AM UTC
-    - cron: "06 9 * * *"
+    - cron: "30 10 * * *"  # Runs daily at 8 AM IST (2:30 AM UTC)
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  run-script:
+  run_script:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the code
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      # Step 2: Set up Python environment
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set Up Python
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.x'
+          python-version: '3.x'  # Change to your Python version if needed
 
-      # Step 3: List files (debugging step, optional)
-      - name: List files in the repository
-        run: ls -la
-
-      # Step 4: Install dependencies (if requirements.txt exists)
       - name: Install Dependencies
         run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          else
-            echo "No requirements.txt file found, skipping."
-          fi
+          pip install -r requirements.txt || echo "No dependencies file found"
 
-      # Step 5: Run the Python script
-      - name: Run Script
-        run: |
-          python "Amz_Webscrapping (2).py"
+      - name: Run the Python Script
+        run: python your_script.py
